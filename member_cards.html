@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22期運営スタッフ 強みカード</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --green-pale: #d8f3dc;
+    --yellow: #f9c74f;
+    --orange: #f8961e;
+    --pink: #f4838a;
+    --blue: #4ea8de;
+    --purple: #9b72cf;
+    --cream: #fefae0;
+    --dark: #1a1a2e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0f4f0;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+  }
+
+  .card-header {
+    padding: 24px 24px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    opacity: 0.12;
+    background: currentColor;
+  }
+
+  .position-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    color: white;
+  }
+
+  .position-icon {
+    font-size: 1rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .type-label {
+    font-size: 0.78rem;
+    color: #888;
+    font-weight: 400;
+  }
+
+  .divider {
+    height: 2px;
+    margin: 0 24px;
+    border-radius: 2px;
+    opacity: 0.2;
+  }
+
+  .card-body {
+    padding: 16px 24px 24px;
+  }
+
+  .keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .keyword {
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .quote-label {
+    font-size: 0.7rem;
+    color: #aaa;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .quote {
+    font-size: 0.85rem;
+    color: #444;
+    line-height: 1.7;
+    border-left: 3px solid;
+    padding-left: 12px;
+    font-style: italic;
+  }
+
+  /* Color themes per position */
+  .guardian .card-header { background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%); color: white; }
+  .guardian .position-badge { background: #f9c74f; color: #1a1a2e; }
+  .guardian .name { color: white; }
+  .guardian .type-label { color: rgba(255,255,255,0.6); }
+  .guardian .divider { background: #f9c74f; opacity: 0.5; }
+  .guardian .keyword { background: #f9c74f22; color: #2d3561; border: 1.5px solid #f9c74f; }
+  .guardian .quote { border-color: #f9c74f; }
+
+  .volante .card-header { background: linear-gradient(135deg, #0d3b66 0%, #1e6091 100%); color: white; }
+  .volante .position-badge { background: #4ea8de; color: white; }
+  .volante .name { color: white; }
+  .volante .type-label { color: rgba(255,255,255,0.6); }
+  .volante .divider { background: #4ea8de; opacity: 0.5; }
+  .volante .keyword { background: #4ea8de22; color: #0d3b66; border: 1.5px solid #4ea8de; }
+  .volante .quote { border-color: #4ea8de; }
+
+  .forward .card-header { background: linear-gradient(135deg, #7b2d8b 0%, #c77dff 100%); color: white; }
+  .forward .position-badge { background: white; color: #7b2d8b; }
+  .forward .name { color: white; }
+  .forward .type-label { color: rgba(255,255,255,0.7); }
+  .forward .divider { background: white; opacity: 0.4; }
+  .forward .keyword { background: #ffffff22; color: #7b2d8b; border: 1.5px solid #c77dff; }
+  .forward .quote { border-color: #e0aaff; }
+
+  .defense .card-header { background: linear-gradient(135deg, #2d6a4f 0%, #52b788 100%); color: white; }
+  .defense .position-badge { background: #d8f3dc; color: #2d6a4f; }
+  .defense .name { color: white; }
+  .defense .type-label { color: rgba(255,255,255,0.7); }
+  .defense .divider { background: #d8f3dc; opacity: 0.5; }
+  .defense .keyword { background: #ffffff22; color: #1b4332; border: 1.5px solid #95d5b2; }
+  .defense .quote { border-color: #95d5b2; }
+
+  /* Field diagram card */
+  .field-card {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    background: #1a6b35;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .field-card h2 {
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+
+  .field {
+    background: #1e7a3c;
+    border: 3px solid rgba(255,255,255,0.4);
+    border-radius: 12px;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    gap: 16px;
+    position: relative;
+  }
+
+  .field::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; height: 80px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+  }
+
+  .field-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .field-position {
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 12px;
+    padding: 10px 16px;
+    text-align: center;
+    min-width: 140px;
+    backdrop-filter: blur(4px);
+  }
+
+  .field-position .pos-name {
+    color: #f9c74f;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .field-position .member-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .field-position .pos-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.65rem;
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    margin: 40px 0 20px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<h1>22期 運営スタッフ</h1>
+<p class="subtitle">チームでいると、自分でも気づかなかった自分に出会える</p>
+
+<!-- Field Diagram -->
+<div class="field-card">
+  <h2>⚽ 運営スタッフのポジション</h2>
+  <div class="field">
+    <!-- Forward line -->
+    <div class="field-row">
+      <div class="field-position">
+        <div class="pos-name">🏃 フォワード</div>
+        <div class="member-name">けんたぬーん</div>
+        <div class="pos-desc">最前線でメンバーと交流</div>
+      </div>
+      <div class="field-position">
+        <div class="pos-name">🏃 フォワード</div>
+        <div class="member-name">マッキー</div>
+        <div class="pos-desc">最前線でメンバーと交流</div>
+      </div>
+    </div>
+    <!-- Volante -->
+    <div class="field-row">
+      <div class="field-position">
+        <div class="pos-name">⚙️ ボランチ</div>
+        <div class="member-name">あんこ</div>
+        <div class="pos-desc">攻守を繋ぐ司令塔</div>
+      </div>
+    </div>
+    <!-- Defense -->
+    <div class="field-row">
+      <div class="field-position">
+        <div class="pos-name">🛡️ ディフェンス</div>
+        <div class="member-name">まふ</div>
+        <div class="pos-desc">縁の下でチームを支える</div>
+      </div>
+      <div class="field-position">
+        <div class="pos-name">🛡️ ディフェンス</div>
+        <div class="member-name">がちゃ</div>
+        <div class="pos-desc">縁の下でチームを支える</div>
+      </div>
+    </div>
+    <!-- Goalkeeper -->
+    <div class="field-row">
+      <div class="field-position">
+        <div class="pos-name">👑 守護神</div>
+        <div class="member-name">イモノヤ</div>
+        <div class="pos-desc">チームに安心感をもたらす</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="section-title">✨ メンバーの強み</p>
+
+<!-- Member Cards -->
+<div class="grid">
+
+  <!-- イモノヤ -->
+  <div class="card guardian">
+    <div class="card-header">
+      <div class="position-badge"><span class="position-icon">👑</span> 守護神</div>
+      <div class="name">イモノヤさん</div>
+      <div class="type-label">心技一体リーダー</div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-body">
+      <div class="keywords">
+        <span class="keyword">リーダーシップ</span>
+        <span class="keyword">場づくり</span>
+        <span class="keyword">チームの安心感</span>
+      </div>
+      <div class="quote-label">みんなの声</div>
+      <div class="quote">「失敗しても命取られないので」という名言で場を和ませてくれる。方向性を示してくれるからこそ、安心して動けます🫶</div>
+    </div>
+  </div>
+
+  <!-- あんこ -->
+  <div class="card volante">
+    <div class="card-header">
+      <div class="position-badge"><span class="position-icon">⚙️</span> ボランチ</div>
+      <div class="name">あんこさん</div>
+      <div class="type-label">気遣いの達人</div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-body">
+      <div class="keywords">
+        <span class="keyword">先回り力</span>
+        <span class="keyword">全体把握</span>
+        <span class="keyword">臨機応変</span>
+      </div>
+      <div class="quote-label">みんなの声</div>
+      <div class="quote">気づいたらすでに動いている。「安心して仕事を任せられる人」のロールモデル✨</div>
+    </div>
+  </div>
+
+  <!-- けんたぬーん -->
+  <div class="card forward">
+    <div class="card-header">
+      <div class="position-badge"><span class="position-icon">🏃</span> フォワード</div>
+      <div class="name">けんたぬーんさん</div>
+      <div class="type-label">秩序の番人</div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-body">
+      <div class="keywords">
+        <span class="keyword">継続力</span>
+        <span class="keyword">対話力</span>
+        <span class="keyword">メンバーを惹きつける力</span>
+      </div>
+      <div class="quote-label">みんなの声</div>
+      <div class="quote">人を惹きつける不思議な魅力。言語化が難しいけれど、みんなから愛されている存在💙</div>
+    </div>
+  </div>
+
+  <!-- マッキー -->
+  <div class="card forward">
+    <div class="card-header">
+      <div class="position-badge"><span class="position-icon">🏃</span> フォワード</div>
+      <div class="name">マッキーさん</div>
+      <div class="type-label">秩序の番人</div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-body">
+      <div class="keywords">
+        <span class="keyword">熱量</span>
+        <span class="keyword">行動力</span>
+        <span class="keyword">巻き込み力</span>
+      </div>
+      <div class="quote-label">みんなの声</div>
+      <div class="quote">目をキラキラさせてアイデアを次々と出し、形にしていく推進力。心を動かされました✨</div>
+    </div>
+  </div>
+
+  <!-- まふ -->
+  <div class="card defense">
+    <div class="card-header">
+      <div class="position-badge"><span class="position-icon">🛡️</span> ディフェンス</div>
+      <div class="name">まふさん</div>
+      <div class="type-label">物語作家</div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-body">
+      <div class="keywords">
+        <span class="keyword">要約力</span>
+        <span class="keyword">デザイン力</span>
+        <span class="keyword">縁の下の力持ち</span>
+      </div>
+      <div class="quote-label">みんなの声</div>
+      <div class="quote">「あったら嬉しい」に気づいて行動できるサポート力。メンバーの細かい情報をキャッチして共有してくれる🍵</div>
+    </div>
+  </div>
+
+  <!-- がちゃ -->
+  <div class="card defense">
+    <div class="card-header">
+      <div class="position-badge"><span class="position-icon">🛡️</span> ディフェンス</div>
+      <div class="name">がちゃさん</div>
+      <div class="type-label">影の補佐官</div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-body">
+      <div class="keywords">
+        <span class="keyword">柔らかいテキストコミュニケーション</span>
+        <span class="keyword">寄り添い力</span>
+        <span class="keyword">継続力</span>
+      </div>
+      <div class="quote-label">みんなの声</div>
+      <div class="quote">返事ひとつで心がふっと軽くなる。そのひと言で、投稿した人が救われています🍀</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
